@@ -8,4 +8,5 @@ KitCamp:
 
 ## Added Features
 
-✅ [Moment JS](http://webdev.slides.com/nax3t/yelpcamp-refactor-moment#/10)
+✅ [Moment JS](http://webdev.slides.com/nax3t/yelpcamp-refactor-moment#/10) 
+✅ [UI Improvements](http://webdev.slides.com/nax3t/yelpcamp-refactor-ui#/17)
