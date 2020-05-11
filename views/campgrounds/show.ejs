@@ -18,7 +18,12 @@
           <h4 class="pull-right">$<%= campground.price %>/night</h4>
           <h4><a><%=campground.name%></a></h4>
           <p><%= campground.description %></p>
-          <p><em>Submitt by <%= campground.author.username %></em></p>
+          <p>
+            <em
+              >Submitted by: <%= campground.author.username %>, <%=
+              moment(campground.createAt).fromNow() %></em
+            >
+          </p>
 
           <% if(currentUser&&campground.author.id.equals(currentUser._id)) {%>
           <a
@@ -52,6 +57,9 @@
         <div class="row">
           <div class="col-md-12">
             <strong><%= comment.author.username %></strong>
+            <span class="pull-right"
+              ><%= moment(comment.createAt).fromNow() %></span
+            >
             <!-- <span class="pull-right">10 days ago</span> -->
             <p>
               <%= comment.text %>

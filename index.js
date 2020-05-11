@@ -3,6 +3,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const flash = require("connect-flash");
+require("dotenv").config();
+
 //APP
 const app = express();
 
@@ -20,6 +22,9 @@ const LocalStrategy = require("passport-local");
 const commentRoutes = require("./routes/comments"),
   campgroundRoutes = require("./routes/campgrounds"),
   indexRoutes = require("./routes/index");
+
+//Add moment to view files via the variable named
+app.locals.moment = require("moment");
 
 //H10 error heroku is about process.env.PORT we should add because it not run on port 3000
 const url = process.env.DATABASEURL || "mongodb://localhost:27017/yelp_camp";
