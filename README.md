@@ -10,3 +10,4 @@ KitCamp:
 
 ✅ [Moment JS](http://webdev.slides.com/nax3t/yelpcamp-refactor-moment#/10)/
 ✅ [UI Improvements](http://webdev.slides.com/nax3t/yelpcamp-refactor-ui#/17)/
+✅ [Notifications Feature](https://www.youtube.com/watch?v=Tt9orKnUiEU)/

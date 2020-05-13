@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Campground = require("../models/campground");
 const middleware = require("../middleware");
+const User = require("../models/user");
+const Notification = require("../models/notification");
 
 //INDEX - show all campgrounds
 router.get("/", (req, res) => {
@@ -10,25 +12,40 @@ router.get("/", (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.render("campgrounds/index", { campgrounds: allCampgrounds, page: 'campgrounds' });
+      res.render("campgrounds/index", {
+        campgrounds: allCampgrounds,
+        page: "campgrounds",
+      });
     }
   });
 });
 
 //CREATE - add new campground to DB
-router.post("/", middleware.isLoggedIn, (req, res) => {
-  const newCamp = req.body.campground;
-  newCamp.author = {
+router.post("/", middleware.isLoggedIn, async (req, res) => {
+  const newCampground = req.body.campground;
+  newCampground.author = {
     id: req.user._id,
     username: req.user.username,
   };
-  Campground.create(newCamp, (err, campground) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.redirect("/campgrounds");
+  try {
+    let campground = await Campground.create(newCampground);
+    let user = await User.findById(req.user._id).populate("followers").exec();
+    let newNotification = {
+      username: req.user.username,
+      campgroundId: campground.id,
+    };
+    for (const follower of user.followers) {
+      let notification = await Notification.create(newNotification);
+      follower.notifications.push(notification);
+      follower.save();
     }
-  });
+
+    //redirect back to campgrounds page
+    res.redirect(`/campgrounds/${campground.id}`);
+  } catch (err) {
+    req.flash("error", err.message);
+    res.redirect("back");
+  }
 });
 
 //NEW - show form to create new campground
