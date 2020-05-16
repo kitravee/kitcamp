@@ -19,4 +19,9 @@ KitCamp:
 
 ❌ Changing Theme
 
+## Fixed Bug 🐞
+
+✅ Redundant register\
+✅ Undefine user (In case of user was delete)
+
 ---
