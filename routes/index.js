@@ -20,7 +20,7 @@ router.get("/register", (req, res) => {
 
 //handle sign up logic
 router.post("/register", (req, res) => {
-  var newUser = new User({ username: req.body.username });
+  const newUser = new User({ username: req.body.username });
   User.register(newUser, req.body.password, (err, user) => {
     if (err) {
       req.flash("error", err.message);
@@ -49,13 +49,21 @@ router.get("/login", (req, res) => {
 //   }
 // );
 
-router.post('/login', function (req, res, next) {
-  passport.authenticate('local', function (err, user, info) {
-    if (err) { return next(err); }
-    if (!user) { return res.redirect('/login'); }
+router.post("/login", function (req, res, next) {
+  passport.authenticate("local", function (err, user, info) {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return res.redirect("/login");
+    }
     req.logIn(user, function (err) {
-      if (err) { return next(err); }
-      var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/campgrounds';
+      if (err) {
+        return next(err);
+      }
+      var redirectTo = req.session.redirectTo
+        ? req.session.redirectTo
+        : "/campgrounds";
       delete req.session.redirectTo;
       res.redirect(redirectTo);
     });

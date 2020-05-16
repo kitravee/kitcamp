@@ -31,7 +31,8 @@
           >
         </p>
 
-        <% if(currentUser&&campground.author.id.equals(currentUser._id)) {%>
+        <% if(currentUser && currentUser._id.equals(campground.author.id) ||
+        currentUser && currentUser.isAdmin){ %>
         <a
           class="btn btn-warning"
           href="/campgrounds/<%= campground._id %>/edit"
@@ -70,7 +71,7 @@
               <div class="float-right">
                 <p><%= moment(comment.createAt).fromNow() %></p>
 
-                <% if(currentUser && comment.author.id.equals(currentUser._id)
+                <% if(currentUser && currentUser._id.equals(comment.author.id)
                 || currentUser && currentUser.isAdmin){ %>
                 <div class="float-right">
                   <a

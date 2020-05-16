@@ -11,7 +11,7 @@ middlewareObj.checkCampgroundOwnership = function (req, res, next) {
         res.redirect("back");
       } else {
         // does user own the campground?
-        if (campground.author.id.equals(req.user._id)) {
+        if (req.user._id.equals(campground.author.id) || req.user.isAdmin) {
           next();
         } else {
           req.flash("error", "You don't have permission to do that");
@@ -33,7 +33,7 @@ middlewareObj.checkCommentOwnership = function (req, res, next) {
         res.redirect("back");
       } else {
         // does user own the campground?
-        if (comment.author.id.equals(req.user._id)) {
+        if (req.user._id.equals(comment.author.id) || req.user.isAdmin) {
           next();
         } else {
           req.flash("error", "You don't have permission to do that");
@@ -62,6 +62,6 @@ middlewareObj.isLoggedIn = (req, res, next) => {
   req.session.redirectTo = req.originalUrl;
   req.flash("error", "You need to be logged in to do that");
   res.redirect("/login");
-}
+};
 
 module.exports = middlewareObj;
