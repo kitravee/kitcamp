@@ -88,18 +88,59 @@ router.get("/users/:id", async function (req, res) {
   }
 });
 
-// follow user
 router.get("/follow/:id", middleware.isLoggedIn, async function (req, res) {
   try {
+    // follower
     let user = await User.findById(req.params.id);
     user.followers.push(req.user._id);
     user.save();
+    //for following
+    let currentUser = await User.findById(req.user._id);
+    currentUser.following.push(req.params.id);
+    currentUser.save();
+
     req.flash("success", "Successfully followed " + user.username + "!");
     res.redirect("/users/" + req.params.id);
   } catch (err) {
     req.flash("error", err.message);
     res.redirect("back");
   }
+});
+
+// unfollow user
+router.delete("/unfollow/:id", middleware.isLoggedIn, async function (
+  req,
+  res
+) {
+  //follower
+  User.findOne({ "_id": req.params.id }, function (err, terget) {
+    if (err) {
+      req.flash("error", err.message);
+      res.redirect("back");
+    }
+    for (let i = 0; i < terget.followers.length; i++) {
+      if (terget.followers[i].equals(req.user._id)) {
+        terget.followers.remove(req.user._id);
+      }
+    }
+    terget.save();
+  });
+
+  //following
+  User.findOne({ "_id": req.user._id }, function (err, terget) {
+    if (err) {
+      req.flash("error", err.message);
+      res.redirect("back");
+    }
+    for (let i = 0; i < terget.following.length; i++) {
+      if (terget.following[i].equals(req.params.id)) {
+        terget.following.remove(req.params.id);
+      }
+    }
+    terget.save();
+  });
+  req.flash("success", "Successfully Unfollowed !");
+  res.redirect("/users/" + req.params.id);
 });
 
 // view all notifications

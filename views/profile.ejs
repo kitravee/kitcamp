@@ -2,8 +2,24 @@
 
 <h1><%= user.username %>'s profile</h1>
 
-<a href="/follow/<%= user.id %>"
-  ><button class="btn btn-primary">Follow <%= user.username %></button></a
+<% if(currentUser.following.find(element => element.equals(user.id))) { %>
+  <form
+  class="delete-form"
+  action="/unfollow/<%= user.id %>?_method=DELETE"
+  method="POST"
 >
+  <button class="btn btn-secondary">
+    unfollow
+  </button>
+</form>
 
-<%- include("./partials/footer") %>
+
+<% } else {%>
+  <a href="/follow/<%= user.id %>">
+    <button class="btn btn-primary">Follow</button></a
+  >  
+<%} %>
+
+
+  <%- include("./partials/footer") %>
+</form>

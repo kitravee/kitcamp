@@ -63,10 +63,14 @@ app.use(passport.session());
 
 app.use(async function (req, res, next) {
   res.locals.currentUser = req.user;
+
   if (req.user) {
     try {
-      let user = await User.findById(req.user._id).populate('notifications', null, { isRead: false }).exec();
+      let user = await User.findById(req.user._id)
+        .populate("notifications", null, { isRead: false })
+        .exec();
       res.locals.notifications = user.notifications.reverse();
+      res.locals.follower = user.follower;
     } catch (err) {
       console.log(err.message);
     }

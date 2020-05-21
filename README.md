@@ -10,14 +10,16 @@ KitCamp:
 
 ✅ [Moment JS](http://webdev.slides.com/nax3t/yelpcamp-refactor-moment#/10)\
 ✅ [UI Improvements](http://webdev.slides.com/nax3t/yelpcamp-refactor-ui#/17)\
-✅ [Notifications](https://www.youtube.com/watch?v=Tt9orKnUiEU)\
+✅ [Follower Notifications](https://www.youtube.com/watch?v=Tt9orKnUiEU)\
 ✅ [Bootstrap](https://www.youtube.com/watch?v=Tt9orKnUiEU) Update version from 3.3.7 to 4.5.0\
 ✅ [Google Maps API](https://www.youtube.com/watch?v=B4OuCjQLJ9k)\
 ✅ [Admin Permission](https://www.youtube.com/watch?v=somc45pnM2k)
+✅ [Following Unfollow]
 
 ## During Development 🔧
 
-❌ Changing Theme
+❌ Changing Theme\
+❌ Cropper.js
 
 ## Fixed Bug 🐞
 
