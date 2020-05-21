@@ -13,8 +13,8 @@ KitCamp:
 ✅ [Follower Notifications](https://www.youtube.com/watch?v=Tt9orKnUiEU)\
 ✅ [Bootstrap](https://www.youtube.com/watch?v=Tt9orKnUiEU) Update version from 3.3.7 to 4.5.0\
 ✅ [Google Maps API](https://www.youtube.com/watch?v=B4OuCjQLJ9k)\
-✅ [Admin Permission](https://www.youtube.com/watch?v=somc45pnM2k)
-✅ [Following Unfollow]
+✅ [Admin Permission](https://www.youtube.com/watch?v=somc45pnM2k)\
+✅ Following Unfollow
 
 ## During Development 🔧
 
