@@ -16,10 +16,10 @@ KitCamp:
 ✅ [Admin Permission](https://www.youtube.com/watch?v=somc45pnM2k)\
 ✅ Following Unfollow
 
-## During Development 🔧
+## During Development 
 
-❌ Changing Theme\
-❌ Cropper.js
+🔧 Changing Theme\
+🔧 Cropper.js
 
 ## Fixed Bug 🐞
 
