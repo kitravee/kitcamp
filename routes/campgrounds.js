@@ -56,7 +56,10 @@ router.post("/", middleware.isLoggedIn, async (req, res) => {
         campgroundId: campground.id,
       };
       for (const follower of user.followers) {
+        //push to notification table
         let notification = await Notification.create(newNotification);
+
+        //push notification to each user user.followers
         follower.notifications.push(notification);
         follower.save();
       }
