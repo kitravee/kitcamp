@@ -15,16 +15,12 @@ KitCamp:
 ✅ [Google Maps API](https://www.youtube.com/watch?v=B4OuCjQLJ9k)\
 ✅ [Admin Permission](https://www.youtube.com/watch?v=somc45pnM2k)\
 ✅ Following Unfollow\
-✅ Fuzzy Search
+✅ Fuzzy Search\
+✅ [Pagination](https://evdokimovm.github.io/javascript/nodejs/mongodb/pagination/expressjs/ejs/bootstrap/2017/08/20/create-pagination-with-nodejs-mongodb-express-and-ejs-step-by-step-from-scratch.html)
 
 ## During Development
 
 🔧 Changing Theme\
 🔧 Cropper.js
-
-## Fixed Bug 🐞
-
-✅ Redundant register\
-✅ Undefine user (In case of user was delete)
 
 ---
