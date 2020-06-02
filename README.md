@@ -18,10 +18,9 @@ KitCamp:
 ✅ Fuzzy Search\
 ✅ [Pagination](https://evdokimovm.github.io/javascript/nodejs/mongodb/pagination/expressjs/ejs/bootstrap/2017/08/20/create-pagination-with-nodejs-mongodb-express-and-ejs-step-by-step-from-scratch.html)\
 ✅ Ratings and Reviews ⭐⭐⭐⭐⭐
+✅ Changing Theme
 
 ## During Development
-
-🔧 Changing Theme\
 🔧 Cropper.js
 
 ---
