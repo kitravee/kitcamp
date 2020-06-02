@@ -27,10 +27,10 @@
         <% if(currentUser && currentUser._id.equals(campground.author.id) ||
         currentUser && currentUser.isAdmin){ %>
 
-        <a class="btn btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+        <a class="btn btn-warning" href="/campgrounds/<%= campground._id %>/edit">EDIT</a>
         <form class="delete-form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
           <button class="btn btn-danger">
-            Delete
+            DELETE
           </button>
         </form>
         <% } %>
@@ -78,10 +78,10 @@
               <% if(currentUser && review.author.id.equals(currentUser._id)){ %>
               <div class="float-right form-inline"">
               <a class=" btn btn-sm btn-warning" style="margin-right: 5px;"
-                href=" /campgrounds/<%=campground._id %>/reviews/<%=review._id %>/edit">Edit</a>
+                href=" /campgrounds/<%=campground._id %>/reviews/<%=review._id %>/edit">EDIT</a>
                 <form id="delete-form"
                   action="/campgrounds/<%=campground._id %>/reviews/<%=review._id %>?_method=DELETE" method="POST">
-                  <input type="submit" class="btn btn-sm btn-danger" value="Delete">
+                  <input type="submit" class="btn btn-sm btn-danger" value="DELETE">
                 </form>
               </div>
 

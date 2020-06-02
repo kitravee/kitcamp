@@ -3,11 +3,7 @@
 <h1><%= user.username %>'s profile</h1>
 
 <% if(currentUser && currentUser.following.find(element => element.equals(user.id))) { %>
-  <form
-  class="delete-form"
-  action="/unfollow/<%= user.id %>?_method=DELETE"
-  method="POST"
->
+<form class="delete-form" action="/unfollow/<%= user.id %>?_method=DELETE" method="POST">
   <button class="btn btn-secondary">
     unfollow
   </button>
@@ -15,11 +11,9 @@
 
 
 <% } else {%>
-  <a href="/follow/<%= user.id %>">
-    <button class="btn btn-primary">Follow</button></a
-  >  
+<a href="/follow/<%= user.id %>">
+  <button class="btn btn-primary">Follow</button></a>
 <%} %>
 
 
-  <%- include("./partials/footer") %>
-</form>
+<%- include("./partials/footer") %>
