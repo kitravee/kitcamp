@@ -14,9 +14,10 @@ KitCamp:
 ✅ [Bootstrap](https://www.youtube.com/watch?v=Tt9orKnUiEU) Update version from 3.3.7 to 4.5.0\
 ✅ [Google Maps API](https://www.youtube.com/watch?v=B4OuCjQLJ9k)\
 ✅ [Admin Permission](https://www.youtube.com/watch?v=somc45pnM2k)\
-✅ Following Unfollow
+✅ Following Unfollow\
+✅ Fuzzy Search
 
-## During Development 
+## During Development
 
 🔧 Changing Theme\
 🔧 Cropper.js
