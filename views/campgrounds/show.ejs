@@ -12,37 +12,23 @@
   </div>
   <div class="col-md-9">
     <div class="card mb-3">
-      <img
-        class="card-img-top"
-        src="<%= campground.image %>"
-        alt="<%= campground.name %>"
-      />
+      <img class="card-img-top" src="<%= campground.image %>" alt="<%= campground.name %>" />
 
       <div class="card-body">
         <h4 class="float-right">$<%= campground.price %>/night</h4>
         <h5 class="card-title"><a><%=campground.name%></a></h5>
         <p><%= campground.description %></p>
         <p>
-          <em
-            >Submitted by:
-            <a href="/users/<%= campground.author.id %>"
-              ><%= campground.author.username %></a
-            >, <%= moment(campground.createAt).fromNow() %></em
-          >
+          <em>Submitted by:
+            <a href="/users/<%= campground.author.id %>"><%= campground.author.username %></a>,
+            <%= moment(campground.createAt).fromNow() %></em>
         </p>
 
         <% if(currentUser && currentUser._id.equals(campground.author.id) ||
         currentUser && currentUser.isAdmin){ %>
-        <a
-          class="btn btn-warning"
-          href="/campgrounds/<%= campground._id %>/edit"
-          >Edit</a
-        >
-        <form
-          class="delete-form"
-          action="/campgrounds/<%= campground._id %>?_method=DELETE"
-          method="POST"
-        >
+
+        <a class="btn btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+        <form class="delete-form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
           <button class="btn btn-danger">
             Delete
           </button>
@@ -50,14 +36,81 @@
         <% } %>
       </div>
     </div>
+
+    <!--Review section-->
+    <div class="card mb-3">
+      <div class="card-body">
+        <% if (campground.rating === 0) { %>
+        <h5>
+          <em>No reviews yet.</em>
+        </h5>
+        <% } else { %>
+        <p>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star <% if (campground.rating > 1.5) { %> checked <% } %>"></span>
+          <span class="fa fa-star <% if (campground.rating > 2.5) { %> checked <% } %>"></span>
+          <span class="fa fa-star <% if (campground.rating > 3.5) { %> checked <% } %>"></span>
+          <span class="fa fa-star <% if (campground.rating > 4.5) { %> checked <% } %>"></span>
+          <em>(total reviews: <%= campground.reviews.length %>)</em>
+        </p>
+        <p>
+          Current campground rating: <strong><%= campground.rating.toFixed(2) %></strong>
+        </p>
+        <p>
+        <h4>Latest reviews for this campground:</h4>
+        </p>
+        <hr style="margin-top: 0;">
+        <% campground.reviews.slice(0, 5).forEach(function(review){ %>
+        <div class="row">
+
+          <div class="col-sm-6 col-md-6">
+            <%- '<span class="fa fa-star checked"></span>'.repeat(review.rating) %><%- '<span class="fa fa-star"></span>'.repeat(5 - review.rating) %>
+            <div>Review by: <strong><%= review.author.username %></strong></div>
+            <span><em><%= review.updatedAt.toDateString() %></em></span>
+            <p style="text-align: justify; word-wrap: break-word;">
+              <%= review.text %>
+            </p>
+          </div>
+
+          <div class="col-sm-6 col-md-6">
+            <div class="float-right">
+
+              <% if(currentUser && review.author.id.equals(currentUser._id)){ %>
+              <div class="float-right form-inline"">
+              <a class=" btn btn-sm btn-warning" style="margin-right: 5px;"
+                href=" /campgrounds/<%=campground._id %>/reviews/<%=review._id %>/edit">Edit</a>
+                <form id="delete-form"
+                  action="/campgrounds/<%=campground._id %>/reviews/<%=review._id %>?_method=DELETE" method="POST">
+                  <input type="submit" class="btn btn-sm btn-danger" value="Delete">
+                </form>
+              </div>
+
+              <% } %>
+            </div>
+          </div>
+
+        </div>
+        <hr>
+        <% }); %>
+        <div style="margin-bottom: 10px;">
+          <h4><a href="/campgrounds/<%= campground._id %>/reviews"><i class="fa fa-search" aria-hidden="true"></i> See
+              all reviews</a></h4>
+        </div>
+        <% } %>
+        <div>
+          <a class="btn btn-primary btn-lg <% if (currentUser && campground.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> disabled <% } %>"
+            href="/campgrounds/<%= campground._id %>/reviews/new">
+            Write a New Review</a>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- comment section -->
     <div class="card">
       <div class="card-body">
         <div class="text-right">
-          <a
-            class="btn btn-success"
-            href="/campgrounds/<%=campground._id%>/comments/new"
-            >Add New Comment</a
-          >
+          <a class="btn btn-success" href="/campgrounds/<%=campground._id%>/comments/new">Add New Comment</a>
         </div>
         <hr />
         <% campground.comments.forEach(function(comment){ %>
@@ -74,16 +127,10 @@
                 <% if(currentUser && currentUser._id.equals(comment.author.id)
                 || currentUser && currentUser.isAdmin){ %>
                 <div class="float-right">
-                  <a
-                    href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit"
-                    class="btn btn-sm btn-warning"
-                    >EDIT</a
-                  >
-                  <form
-                    class="delete-form"
-                    action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE"
-                    method="POST"
-                  >
+                  <a href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit"
+                    class="btn btn-sm btn-warning">EDIT</a>
+                  <form class="delete-form"
+                    action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
                     <button class="btn btn-sm btn-danger">DELETE</button>
                   </form>
                 </div>
@@ -127,10 +174,7 @@
   }
 </script>
 
-<script
-  async
-  defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRXzFO-ifEVXsXY3xYel9VeikiTzv1NdQ&callback=initMap"
-></script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRXzFO-ifEVXsXY3xYel9VeikiTzv1NdQ&callback=initMap"></script>
 
 <%- include("../partials/footer") %>

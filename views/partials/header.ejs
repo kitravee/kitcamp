@@ -1,70 +1,101 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <!-- Make site responsive on mobile/tablet -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KitCamp</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <!-- <link rel="stylesheet" href="/stylesheets/styles.css" /> -->
+  </head>
 
-<head>
-  <!-- Make site responsive on mobile/tablet -->
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>KitCamp</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
-  <link rel="stylesheet" href="/stylesheets/main.css" />
-  <!-- <link rel="stylesheet" href="/stylesheets/styles.css" /> -->
-</head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+      <a class="navbar-brand" href="/">KitCamp</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarCollapse"
+        aria-controls="navbarCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li
+            class="nav-item <%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>"
+          >
+            <a href="/campgrounds" class="nav-link">Home</a>
+          </li>
+        </ul>
 
-<body>
+        <ul class="navbar-nav navbar-right">
+          <% if(!currentUser){ %>
+          <li
+            class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"
+          >
+            <a href="/login" class="nav-link">Login</a>
+          </li>
+          <li
+            class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"
+          >
+            <a href="/register" class="nav-link">Sign Up</a>
+          </li>
+          <% } else { %>
+          <li class="dropdown">
+            <a
+              href="#"
+              class="dropdown-toggle nav-link"
+              class="nav-link"
+              data-toggle="dropdown"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              >Notifications
+              <span class="badge badge-light"
+                ><%= notifications.length %></span
+              ></a
+            >
+            <ul class="dropdown-menu">
+              <a href="/notifications" class="dropdown-item"
+                >View past notifications</a
+              >
 
+              <% notifications.forEach(function(notification) { %>
 
+              <a
+                href="/notifications/<%= notification.id %>"
+                class="dropdown-item"
+              >
+                <%= notification.username %> created a new campground
+              </a>
 
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-    <a class="navbar-brand" href="/">KitCamp</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-
-
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item <%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>">
-          <a href="/campgrounds" class="nav-link">Home</a>
-        </li>
-      </ul>
-
-      <ul class="navbar-nav navbar-right">
-        <% if(!currentUser){ %>
-        <li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
-          <a href="/login" class="nav-link">Login</a>
-        </li>
-        <li class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>">
-          <a href="/register" class="nav-link">Sign Up</a>
-        </li>
-        <% } else { %>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle nav-link" class="nav-link" data-toggle="dropdown" role="button"
-            aria-haspopup="true" aria-expanded="false">Notifications
-            <span class="badge badge-light"><%= notifications.length %></span></a>
-          <ul class="dropdown-menu">
-
-            <a href="/notifications" class="dropdown-item">View past notifications</a>
-
-            <% notifications.forEach(function(notification) { %>
-
-            <a href="/notifications/<%= notification.id %>" class="dropdown-item">
-              <%= notification.username %> created a new campground
-            </a>
-
-            <% }); %>
-          </ul>
-        </li>
-        <li><a href="#" class="nav-link">Signed In As <%= currentUser.username %></a></li>
-        <li><a href="/logout" class="nav-link">Logout</a></li>
-        <% } %>
-      </ul>
-    </div>
-  </nav>
-
-</body>
-
+              <% }); %>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="nav-link"
+              >Signed In As <%= currentUser.username %></a
+            >
+          </li>
+          <li><a href="/logout" class="nav-link">Logout</a></li>
+          <% } %>
+        </ul>
+      </div>
+    </nav>
+  </body>
 </html>
 
 <div class="container">

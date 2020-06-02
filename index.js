@@ -21,7 +21,8 @@ const LocalStrategy = require("passport-local");
 //requring routes
 const commentRoutes = require("./routes/comments"),
   campgroundRoutes = require("./routes/campgrounds"),
-  indexRoutes = require("./routes/index");
+  indexRoutes = require("./routes/index"),
+  reviewRoutes = require("./routes/reviews");
 
 //Add moment to view files via the variable named
 app.locals.moment = require("moment");
@@ -87,6 +88,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use("/", indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
+app.use("/campgrounds/:id/reviews", reviewRoutes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

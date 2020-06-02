@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Comment = require("./comment");
+// const Comment = require("./comment");
 
 const campgroundSchema = new mongoose.Schema({
   name: String,
@@ -23,14 +23,25 @@ const campgroundSchema = new mongoose.Schema({
       ref: "Comment",
     },
   ],
+  reviews: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Review",
+    },
+  ],
+  rating: {
+    type: Number,
+    default: 0,
+  },
 });
 
-campgroundSchema.pre("remove", async function () {
-  await Comment.deleteMany({ _id: { $in: this.comments } }, (err) => {
-    if (err) {
-      console.log(err);
-    }
-  });
-});
+// before review feature
+// campgroundSchema.pre("remove", async function () {
+//   await Comment.deleteMany({ _id: { $in: this.comments } }, (err) => {
+//     if (err) {
+//       console.log(err);
+//     }
+//   });
+// });
 
 module.exports = mongoose.model("Campground", campgroundSchema);

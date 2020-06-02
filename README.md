@@ -16,7 +16,8 @@ KitCamp:
 ✅ [Admin Permission](https://www.youtube.com/watch?v=somc45pnM2k)\
 ✅ Following Unfollow\
 ✅ Fuzzy Search\
-✅ [Pagination](https://evdokimovm.github.io/javascript/nodejs/mongodb/pagination/expressjs/ejs/bootstrap/2017/08/20/create-pagination-with-nodejs-mongodb-express-and-ejs-step-by-step-from-scratch.html)
+✅ [Pagination](https://evdokimovm.github.io/javascript/nodejs/mongodb/pagination/expressjs/ejs/bootstrap/2017/08/20/create-pagination-with-nodejs-mongodb-express-and-ejs-step-by-step-from-scratch.html)\
+✅ Ratings and Reviews
 
 ## During Development
 

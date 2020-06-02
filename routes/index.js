@@ -4,6 +4,7 @@ const passport = require("passport");
 const User = require("../models/user");
 const Notification = require("../models/notification");
 const middleware = require("../middleware");
+
 //REST
 router.get("/", (req, res) => {
   res.render("landing");
