@@ -18,7 +18,17 @@ KitCamp:
 ✅ Fuzzy Search\
 ✅ [Pagination](https://evdokimovm.github.io/javascript/nodejs/mongodb/pagination/expressjs/ejs/bootstrap/2017/08/20/create-pagination-with-nodejs-mongodb-express-and-ejs-step-by-step-from-scratch.html)\
 ✅ Ratings and Reviews ⭐⭐⭐⭐⭐\
-✅ Changing Theme
+✅ Changing Theme and template
+
+## kitcamp-future-template
+This template reference from https://startbootstrap.com/themes/agency  \
+I try to modify the header section to be the Video (Web view) and Picture (Mobile view).\
+[For more information](https://github.com/kitravee/kitcamp-future-template)
+
+<h2 align="center">
+  <img src="https://github.com/kitravee/kitcamp-future-template/blob/master/assets/img/demo.gif" alt="Look up!" width="600px" />
+  <br>
+</h2>
 
 ## During Development
 🔧 Cropper.js
