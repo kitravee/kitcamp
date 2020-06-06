@@ -18,9 +18,10 @@ KitCamp:
 ✅ Fuzzy Search\
 ✅ [Pagination](https://evdokimovm.github.io/javascript/nodejs/mongodb/pagination/expressjs/ejs/bootstrap/2017/08/20/create-pagination-with-nodejs-mongodb-express-and-ejs-step-by-step-from-scratch.html)\
 ✅ Ratings and Reviews ⭐⭐⭐⭐⭐\
-✅ Changing Theme and template
+✅ [Changing Theme and template](#changing-theme-and-template)\
+✅ [Facebook message](#facebook-message)
 
-## kitcamp-future-template
+## Changing Theme and template
 This template reference from https://startbootstrap.com/themes/agency  \
 I try to modify the header section to be the Video (Web view) and Picture (Mobile view).\
 [For more information](https://github.com/kitravee/kitcamp-future-template)
@@ -28,6 +29,11 @@ I try to modify the header section to be the Video (Web view) and Picture (Mobil
 <h2 align="center">
   <img src="https://github.com/kitravee/kitcamp-future-template/blob/master/assets/img/demo.gif" alt="Look up!" width="600px" />
   <br>
+</h2>
+
+## Facebook message
+<h2 align="center">
+  <img src="https://github.com/kitravee/kitcamp/blob/master/public/assets/img/fb-message.png" alt="fb" width="80%">
 </h2>
 
 ## During Development
