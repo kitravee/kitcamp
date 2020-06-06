@@ -4787,7 +4787,11 @@ a.badge-dark:focus, a.badge-dark.focus {
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
-  background-color: #e9ecef;
+  background: url("../assets/img/header-bg.jpg") no-repeat center center; 
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
   border-radius: 0.3rem;
 }
 @media (min-width: 576px) {
@@ -10145,7 +10149,6 @@ header .overlay {
   header {
     padding-top: 10.5rem;
     padding-bottom: 12rem;
-    text-align: center;
     color: #fff;
     background-image: url("../assets/img/header-bg.jpg");
     background-repeat: no-repeat;
@@ -10162,7 +10165,7 @@ header.masthead {
   padding-bottom: 6rem;
   text-align: center;
   color: #fff;
-  background-image: url("../assets/img/header-bg.jpg");
+  /* background-image: url("../assets/img/header-bg.jpg"); */
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
