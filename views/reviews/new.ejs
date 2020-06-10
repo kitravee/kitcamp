@@ -2,10 +2,11 @@
 
 <div class="container">
     <div class="row">
-        <h1 style="text-align: center">New Review: <%= campground.name %></h1>
+
         <div style="width: 30%; margin: 25px auto;">
             <form action="/campgrounds/<%= campground._id %>/reviews" method="POST">
                 <div class="form-group">
+                    <h1 style="text-align: center">New Review: <%= campground.name %></h1>
                     <label for="rating">Leave a rating:</label>
                     <fieldset class="starability-basic form-group" id="rating">
                         <div>
